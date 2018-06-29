@@ -25,4 +25,9 @@ public class PlayerController : MonoBehaviour {
             transform.position = new Vector2(fullHalfWidth * transform.position.x / xMantisse, transform.position.y);
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        print("Colidiu");
+    }
 }
