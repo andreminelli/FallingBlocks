@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
     private const int Speed = 7;
     private float screenHalfWidth;
     private float playerHalfWidth;
