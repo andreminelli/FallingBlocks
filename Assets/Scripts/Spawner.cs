@@ -6,7 +6,11 @@ public class Spawner : MonoBehaviour {
 
 	public GameObject FallingBlockPrefab;
 	public int Speed = 7;
-	public float secondsBetweenSpawns = 1;
+	public float SecondsBetweenSpawns = 1;
+	public float SpawnAngleMax = 15;
+	public float SpawnSizeMin = 0.2f;
+	public float SpawnSizeMax = 2f;
+
 
 	float nextSpawnTime;
 	Vector2 screenHalfWidthWorldUnits;
@@ -20,9 +24,12 @@ public class Spawner : MonoBehaviour {
 	void Update () {
 		if (Time.time > nextSpawnTime)
 		{
-			nextSpawnTime = Time.time + secondsBetweenSpawns;
+			nextSpawnTime = Time.time + SecondsBetweenSpawns;
+			var spawnAngle = Random.Range(-SpawnAngleMax, SpawnAngleMax);
+			var spawnSize = Random.Range(SpawnSizeMin, SpawnSizeMax);
 			var spawnPosition = new Vector2(Random.Range(-screenHalfWidthWorldUnits.x, screenHalfWidthWorldUnits.x), screenHalfWidthWorldUnits.y);
-			Instantiate(FallingBlockPrefab, spawnPosition, Quaternion.identity);
+			var newBlock = (GameObject)Instantiate(FallingBlockPrefab, spawnPosition, Quaternion.identity);
+			newBlock.transform.localScale = Vector2.one * spawnSize;
 		}
 
 	}

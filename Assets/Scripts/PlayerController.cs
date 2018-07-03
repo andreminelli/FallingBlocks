@@ -31,6 +31,6 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D collider)
 	{
 		OnPlayerDeath?.Invoke();
-		//print("Colidiu");
+		Destroy(gameObject);
 	}
 }
