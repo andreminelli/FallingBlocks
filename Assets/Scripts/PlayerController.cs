@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Start ()
 	{
- 		playerHalfWidth = transform.localScale.x / 2;
+		playerHalfWidth = transform.localScale.x / 2;
 		screenHalfWidth = Camera.main.aspect * Camera.main.orthographicSize;
 	}
 	
