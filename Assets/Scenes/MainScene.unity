@@ -371,7 +371,8 @@ MonoBehaviour:
   FallingBlockPrefab: {fileID: 1444401093601150, guid: 1b37efe366d43cc48a5806ccdefe9b7f,
     type: 2}
   Speed: 7
-  SecondsBetweenSpawns: 1
+  SecondsBetweenSpawnsMin: 0.1
+  SecondsBetweenSpawnsMax: 1
   SpawnAngleMax: 15
   SpawnSizeMin: 1
   SpawnSizeMax: 4
