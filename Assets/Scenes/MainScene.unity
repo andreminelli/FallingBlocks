@@ -368,7 +368,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7385ff61ec899a84eb16fd5b8ddd8ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FallingBlockPrefab: {fileID: 1444401093601150, guid: 1b37efe366d43cc48a5806ccdefe9b7f,
+  FallingBlockPrefab1: {fileID: 1444401093601150, guid: 1b37efe366d43cc48a5806ccdefe9b7f,
+    type: 2}
+  FallingBlockPrefab2: {fileID: 1316302439306828, guid: 49dd47d34e588294284f931a9c01c4c6,
+    type: 2}
+  FallingBlockPrefab3: {fileID: 1214307269159734, guid: 93ee74f1c20dd0942aca2bf0e47b6a2f,
     type: 2}
   Speed: 7
   SecondsBetweenSpawnsMin: 0.1
