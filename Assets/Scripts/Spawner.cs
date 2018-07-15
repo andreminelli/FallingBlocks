@@ -37,7 +37,7 @@ public class Spawner : MonoBehaviour {
 			var spawnAngle = Random.Range(-SpawnAngleMax, SpawnAngleMax);
 			var spawnSize = Random.Range(SpawnSizeMin, SpawnSizeMax);
 			var spawnPosition = new Vector2(Random.Range(-screenHalfWidthWorldUnits.x, screenHalfWidthWorldUnits.x), screenHalfWidthWorldUnits.y);
-			var fallingBlockPrefab = fallingBlocksPrefabs[Mathf.RoundToInt(Random.Range(0, fallingBlocksPrefabs.Length-1))];
+			var fallingBlockPrefab = fallingBlocksPrefabs[Random.Range(0, 1000) % fallingBlocksPrefabs.Length];
 			var newBlock = Instantiate(fallingBlockPrefab, spawnPosition, Quaternion.Euler(Vector3.forward * spawnAngle));
 			newBlock.transform.localScale = Vector2.one * spawnSize;
 		}
