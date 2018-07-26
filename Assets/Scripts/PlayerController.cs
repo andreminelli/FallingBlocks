@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour {
 		if (collider.tag == "Powerup")
 		{
 			OnPowerup?.Invoke();
-			Destroy(collider.gameObject);
+			Destroy(collider.gameObject.transform.parent.gameObject);
 		}
 		else
 		{
