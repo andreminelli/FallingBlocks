@@ -18,11 +18,11 @@ public class Spawner : MonoBehaviour {
 
 	GameObject[] fallingBlocksPrefabs;
 	float nextSpawnTime;
-	Vector2 screenHalfWidthWorldUnits;
+	Vector2 screenHalfWorldUnits;
 
 	// Use this for initialization
 	void Start () {
-		screenHalfWidthWorldUnits = new Vector2(Camera.main.aspect * Camera.main.orthographicSize, Camera.main.orthographicSize);
+		screenHalfWorldUnits = Screen.HalfWorldUnits;
 
 		fallingBlocksPrefabs = new[] { FallingBlockPrefab1, FallingBlockPrefab2, FallingBlockPrefab3 };
 	}
@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour {
 
 			var spawnAngle = Random.Range(-SpawnAngleMax, SpawnAngleMax);
 			var spawnSize = Random.Range(SpawnSizeMin, SpawnSizeMax);
-			var spawnPosition = new Vector2(Random.Range(-screenHalfWidthWorldUnits.x, screenHalfWidthWorldUnits.x), screenHalfWidthWorldUnits.y);
+			var spawnPosition = new Vector2(Random.Range(-screenHalfWorldUnits.x, screenHalfWorldUnits.x), screenHalfWorldUnits.y);
 			var fallingBlockPrefab = fallingBlocksPrefabs[Random.Range(0, 1000) % fallingBlocksPrefabs.Length];
 			var newBlock = Instantiate(fallingBlockPrefab, spawnPosition, Quaternion.Euler(Vector3.forward * spawnAngle));
 			newBlock.transform.localScale = Vector2.one * spawnSize;

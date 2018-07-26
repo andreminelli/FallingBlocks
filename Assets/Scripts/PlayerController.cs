@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 	private float playerHalfWidth;
 
 	public event Action OnPlayerDeath;
+	public event Action OnPowerup;
 
 	void Start ()
 	{
@@ -30,7 +31,15 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collider)
 	{
-		OnPlayerDeath?.Invoke();
-		Destroy(gameObject);
+		if (collider.tag == "Powerup")
+		{
+			OnPowerup?.Invoke();
+			Destroy(collider.gameObject);
+		}
+		else
+		{
+			OnPlayerDeath?.Invoke();
+			Destroy(gameObject);
+		}
 	}
 }
