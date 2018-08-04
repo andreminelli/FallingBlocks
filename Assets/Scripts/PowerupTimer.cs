@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class PowerupTimer : MonoBehaviour {
 
-	public Slider PowerupSlider;
+	public static float PowerUpTimeInSecs = 5;
 
-	public float PowerUpTimeInSecs = 5;
+	public Slider PowerupSlider;
+	public Text PowerupText;
 
 	bool isEnabled = false;
 	float StartTime;
@@ -27,6 +28,7 @@ public class PowerupTimer : MonoBehaviour {
 	{
 		if (isEnabled)
 		{
+			PowerupText.text = "Stop falling";
 			var currentPowerupValue = Mathf.Lerp(1, 0, (Time.time - StartTime) / PowerUpTimeInSecs);
 			//print(currentPowerupValue);
 			PowerupSlider.value = currentPowerupValue;

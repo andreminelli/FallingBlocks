@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PowerupSpawner : MonoBehaviour {
 	public GameObject StopFallingPrefab;
@@ -8,21 +6,25 @@ public class PowerupSpawner : MonoBehaviour {
 	Vector2 screenHalfWorldUnits;
 	float nextSpawnTime;
 
-	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		screenHalfWorldUnits = Screen.HalfWorldUnits;
-		nextSpawnTime = 5f;
+		SetNextSpawnTime();
 	}
 
-	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		if (Time.time > nextSpawnTime)
 		{
 			var spawnPosition = new Vector2(Random.Range(-screenHalfWorldUnits.x, screenHalfWorldUnits.x), screenHalfWorldUnits.y);
 			Instantiate(StopFallingPrefab, spawnPosition, Quaternion.identity);
 
-			// Stop spawning
-			nextSpawnTime = float.MaxValue;
+			SetNextSpawnTime();
 		}
+	}
+
+	private void SetNextSpawnTime()
+	{
+		nextSpawnTime = Time.time + Random.Range(5, 15);
 	}
 }
