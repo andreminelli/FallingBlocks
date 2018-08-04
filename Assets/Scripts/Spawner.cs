@@ -29,7 +29,7 @@ public class Spawner : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Time.time > nextSpawnTime)
+		if (Time.time > nextSpawnTime && Difficulty.SpawnEnabled)
 		{
 			var secondsBetweenSpawns = Mathf.Lerp(SecondsBetweenSpawnsMax, SecondsBetweenSpawnsMin, Difficulty.GetDifficultyPercent());
 			nextSpawnTime = Time.time + secondsBetweenSpawns;

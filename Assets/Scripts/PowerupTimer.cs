@@ -17,14 +17,14 @@ public class PowerupTimer : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		SetEnable(false);
+		EnablePowerupBar(false);
 		PowerupSlider.value = 1;
 
-		FindObjectOfType<PlayerController>().OnPowerup += StartTimer;
+		FindObjectOfType<PlayerController>().OnPowerup += StartPowerUp;
 	}
 
 	// Update is called once per frame
-	void Update ()
+	void Update()
 	{
 		if (isEnabled)
 		{
@@ -33,20 +33,25 @@ public class PowerupTimer : MonoBehaviour {
 			//print(currentPowerupValue);
 			PowerupSlider.value = currentPowerupValue;
 
-			if (currentPowerupValue <= 0)
+			if (PowerupFinished())
 			{
-				SetEnable(false);
+				EnablePowerupBar(false);
+				Difficulty.EnableSpawn(true);
 			}
 		}
 	}
 
-	private void StartTimer()
+	private bool PowerupFinished() 
+		=> PowerupSlider.value <= 0;
+
+	private void StartPowerUp()
 	{
-		SetEnable(true);
 		StartTime = Time.time;
+		EnablePowerupBar(true);
+		Difficulty.EnableSpawn(false);
 	}
 
-	private void SetEnable(bool enabled)
+	private void EnablePowerupBar(bool enabled)
 	{
 		isEnabled = enabled;
 		PowerupSlider.gameObject.SetActive(enabled);
