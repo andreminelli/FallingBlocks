@@ -27,6 +27,23 @@ public class PlayerController : MonoBehaviour {
 		{
 			transform.position = new Vector2(fullHalfWidth * transform.position.x / xMantisse, transform.position.y);
 		}
+
+		Beam();
+	}
+
+	private void Beam()
+	{
+		var hitInfo = Physics2D.Raycast(transform.position, transform.up, 100);
+		if (hitInfo.collider != null)
+		{
+			Debug.Log(hitInfo.collider.name);
+			Debug.DrawLine(transform.position, hitInfo.point, Color.red);
+		}
+		else
+		{
+			Debug.Log("no collider");
+			Debug.DrawLine(transform.position, transform.position + transform.up * 100, Color.green);
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D collider)
