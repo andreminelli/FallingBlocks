@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
 	
 	void Update ()
 	{
-		var inputX = Input.GetAxisRaw("Horizontal");
+		var inputX = GameInput.GetHorizontalMovement();
 		var velocity = inputX * Speed;
 		transform.Translate(Vector2.right * velocity * Time.deltaTime);
 

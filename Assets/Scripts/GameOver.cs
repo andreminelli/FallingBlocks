@@ -21,7 +21,7 @@ public class GameOver : MonoBehaviour {
 	void Update () {
 		if (gameOver)
 		{
-			if (Input.GetKeyDown(KeyCode.Space))
+			if (GameInput.WasRestartPressedThisFrame())
 			{
 				SceneManager.LoadScene(0);
 			}
