@@ -3,12 +3,10 @@
 public class PowerupSpawner : MonoBehaviour {
 	public GameObject StopFallingPrefab;
 
-	Vector2 screenHalfWorldUnits;
 	float nextSpawnTime;
 
 	void Start ()
 	{
-		screenHalfWorldUnits = Screen.HalfWorldUnits;
 		SetNextSpawnTime();
 	}
 
@@ -16,7 +14,8 @@ public class PowerupSpawner : MonoBehaviour {
 	{
 		if (Time.time > nextSpawnTime)
 		{
-			var spawnPosition = new Vector2(Random.Range(-screenHalfWorldUnits.x, screenHalfWorldUnits.x), screenHalfWorldUnits.y);
+			var horizontalBounds = Screen.HorizontalWorldBounds;
+			var spawnPosition = new Vector2(Random.Range(horizontalBounds.x, horizontalBounds.y), Screen.TopWorldY);
 			Instantiate(StopFallingPrefab, spawnPosition, Quaternion.identity);
 
 			SetNextSpawnTime();

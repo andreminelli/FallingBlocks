@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 	private const int Speed = 7;
-	private float screenHalfWidth;
 	private float playerHalfWidth;
 
 	public event Action OnPlayerDeath;
@@ -11,8 +10,8 @@ public class PlayerController : MonoBehaviour {
 
 	void Start ()
 	{
-		playerHalfWidth = transform.localScale.x / 2;
-		screenHalfWidth = Camera.main.aspect * Camera.main.orthographicSize;
+		var collider2d = GetComponent<Collider2D>();
+		playerHalfWidth = collider2d != null ? collider2d.bounds.extents.x : transform.localScale.x / 2f;
 	}
 	
 	void Update ()
@@ -21,12 +20,9 @@ public class PlayerController : MonoBehaviour {
 		var velocity = inputX * Speed;
 		transform.Translate(Vector2.right * velocity * Time.deltaTime);
 
-		var xMantisse = Math.Abs(transform.position.x);
-		var fullHalfWidth = screenHalfWidth - playerHalfWidth;
-		if (xMantisse > fullHalfWidth)
-		{
-			transform.position = new Vector2(fullHalfWidth * transform.position.x / xMantisse, transform.position.y);
-		}
+		var horizontalBounds = Screen.HorizontalWorldBounds;
+		var clampedX = Mathf.Clamp(transform.position.x, horizontalBounds.x + playerHalfWidth, horizontalBounds.y - playerHalfWidth);
+		transform.position = new Vector2(clampedX, transform.position.y);
 
 		Beam();
 	}
