@@ -1,19 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FallingBlock : MonoBehaviour {
-	private const int Speed = 7;
+	private Vector2 speedMinMax = new(7, 13);
+	private float speed;
 	private float visibleHeightThreshold;
 
-	// Use this for initialization
-	void Start () {
-		visibleHeightThreshold = -Camera.main.orthographicSize - transform.localScale.y;	
+	public void Initialize(Vector2 configuredSpeedMinMax)
+	{
+		speedMinMax = configuredSpeedMinMax;
+		speed = Mathf.Lerp(speedMinMax.x, speedMinMax.y, Difficulty.GetDifficultyPercent());
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		transform.Translate(Vector3.down * Speed * Time.deltaTime);
+
+    void Start()
+    {
+		visibleHeightThreshold = -Camera.main.orthographicSize - transform.localScale.y;
+		speed = Mathf.Lerp(speedMinMax.x, speedMinMax.y, Difficulty.GetDifficultyPercent());
+	}
+
+    void Update()
+    {
+		transform.Translate(Vector3.down * speed * Time.deltaTime);
 		if (transform.position.y < visibleHeightThreshold)
 		{
 			Destroy(gameObject);

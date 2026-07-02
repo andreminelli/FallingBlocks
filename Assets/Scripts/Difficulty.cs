@@ -2,7 +2,7 @@
 
 public class Difficulty : MonoBehaviour {
 
-    static float SecondsToMaxDifficulty = 20f;
+    static float SecondsToMaxDifficulty = 30f;
 
     public static bool SpawnEnabled { get; private set; } = true;
 
