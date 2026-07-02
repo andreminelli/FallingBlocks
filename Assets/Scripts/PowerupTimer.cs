@@ -55,6 +55,7 @@ public class PowerupTimer : MonoBehaviour {
 	{
 		isEnabled = enabled;
 		PowerupSlider.gameObject.SetActive(enabled);
+		PowerupText.gameObject.SetActive(enabled);
 	}
 
 }
