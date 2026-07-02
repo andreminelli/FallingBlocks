@@ -14,7 +14,7 @@ public class GameOver : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GameOverScreen.SetActive(false);
-		FindObjectOfType<PlayerController>().OnPlayerDeath += OnGameOver;
+		Object.FindAnyObjectByType<PlayerController>().OnPlayerDeath += OnGameOver;
 	}
 
 	// Update is called once per frame
