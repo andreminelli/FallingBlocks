@@ -23,7 +23,7 @@ public class Screen
             var centerX = mainCamera.transform.position.x;
             var halfWidth = mainCamera.aspect * mainCamera.orthographicSize;
 
-            var scrollingBackground = Object.FindObjectOfType<BackgroundScrolling>();
+            var scrollingBackground = Object.FindAnyObjectByType<BackgroundScrolling>();
             if (scrollingBackground != null)
             {
                 var backgroundRenderer = scrollingBackground.GetComponent<Renderer>();

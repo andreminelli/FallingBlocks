@@ -20,7 +20,7 @@ public class PowerupTimer : MonoBehaviour {
 		EnablePowerupBar(false);
 		PowerupSlider.value = 1;
 
-		FindObjectOfType<PlayerController>().OnPowerup += StartPowerUp;
+		FindAnyObjectByType<PlayerController>().OnPowerup += StartPowerUp;
 	}
 
 	// Update is called once per frame
